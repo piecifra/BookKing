@@ -1,0 +1,22 @@
+<p> HOME <p>
+
+<%= form_tag welcome_hello_path, method: :get do %>
+
+	<p>Cerca utente</p>
+	<p>
+		<%= text_field_tag :search_user, params[:username] %>
+		<%= submit_tag "Search", :username => nil %>
+	</p>
+
+	<% for user in @users %>
+
+	<p><%= user.username %></p>
+
+	<% end %>
+
+	<p>Cerca libro</p>
+	<p>
+		<%= text_field_tag :search_book, params[:titolo] %>
+		<%= submit_tag "Search", :titolo => nil %>
+	</p>
+<% end %>

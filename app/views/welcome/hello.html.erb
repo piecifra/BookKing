@@ -11,6 +11,7 @@
 	<% for user in @users %>
 
 	<p><%= user.username %></p>
+	<%= link_to user.username, user %>
 
 	<% end %>
 

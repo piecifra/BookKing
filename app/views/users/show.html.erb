@@ -1,7 +1,11 @@
 <div>
+	<li><%= image_tag(@user.avatar.url(:thumb)) %></li>
 	<p>Email: <%= @user.email %></p>
 	<p>Username: <%= @user.username %> </p>
 	<p>Indirizzo: <%= @user.indirizzo %> </p>
 	<p>Anno di nascita: <%= @user.annonascita %> </p>
+
+	<% if current_user.id == @user.id %>
 	<%= link_to 'Edit Profile', edit_user_registration_path %>
+	<% end %>
 </div>

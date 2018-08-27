@@ -13,11 +13,12 @@
 	<% if user_signed_in? %>
 	<%= link_to "Home", root_path, class: 'button' %>
 	<%= link_to "Profilo", current_user, class: 'button' %>
-	<%= link_to "Lista desideri", root_path, class: 'button' %>
-	<%= link_to "Lista Proposte", root_path, class: 'button' %>
+	<%= link_to "Lista desideri", desidered_books_path, class: 'button' %>
+	<%= link_to "Lista Proposte", proposed_books_path, class: 'button' %>
 	<%= link_to "Miei scambi", root_path, class: 'button' %>
 	<%= link_to "Logut", destroy_user_session_path, :method => :delete %>
 	<% else %>
+	<%= link_to "Home", root_path, class: 'button' %>
 	<%= link_to "Login", new_user_session_path, class: 'button' %>
 	<%= link_to "Sign Up", new_user_registration_path, class: 'button' %>
 	<% end %>

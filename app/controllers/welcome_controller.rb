@@ -1,11 +1,10 @@
 class WelcomeController < ApplicationController
   
   	def hello
-  		if params[:username]
-    		@users = User.where('username LIKE ?', "%#{params[:username]}%")
-  		else
-    		@users = User.all
-		end
+  	end
+
+  	def userssearch
+		@users = User.search(params[:search])
   	end
 
 	def hello_params

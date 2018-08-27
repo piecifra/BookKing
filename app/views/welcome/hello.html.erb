@@ -1,18 +1,20 @@
 <p> HOME <p>
 
-<%= form_tag welcome_hello_path, method: :get do %>
+<%= form_tag welcome_hello_path, method: :get, :id => 'users_search' do %>
 
 	<p>Cerca utente</p>
 	<p>
-		<%= text_field_tag :search_user, params[:username] %>
-		<%= submit_tag "Search", :username => nil %>
+		<%= text_field_tag :userssearch, params[:search] %>
+		<%= submit_tag "Search", :search => nil %>
 	</p>
 
-	<% for user in @users %>
+	<% if @user %>
+		<% for user in @users %>
 
-	<p><%= user.username %></p>
-	<%= link_to user.username, user %>
+		<p><%= user.username %></p>
+		<%= link_to user.username, user %>
 
+		<% end %>
 	<% end %>
 
 	<p>Cerca libro</p>

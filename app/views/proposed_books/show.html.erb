@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @proposed_book.nome %>
+</p>
+
+<p>
+  <strong>Autore:</strong>
+  <%= @proposed_book.autore %>
+</p>
+
+<p>
+  <strong>Genere:</strong>
+  <%= @proposed_book.genere %>
+</p>
+
+<p>
+  <strong>Stato:</strong>
+  <%= @proposed_book.stato %>
+</p>
+
+<p>
+  <strong>Anno:</strong>
+  <%= @proposed_book.anno %>
+</p>
+
+<p>
+  <strong>Isbn:</strong>
+  <%= @proposed_book.ISBN %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @proposed_book.user %>
+</p>
+
+<%= link_to 'Edit', edit_proposed_book_path(@proposed_book) %> |
+<%= link_to 'Back', proposed_books_path %>

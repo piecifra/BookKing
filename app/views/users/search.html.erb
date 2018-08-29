@@ -1,0 +1,8 @@
+<p>Risultati</p>
+<% if @users.empty? %>
+	<p>No results</p>
+<% else %>
+	    <% @users.each do |user| %>
+	        <p><%= user.username %> <%= link_to 'Show', user %> </p>
+	    <% end %>
+<% end %>

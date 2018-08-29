@@ -12,67 +12,69 @@
 	<% end %>
 
 
-	<% if @user.id != current_user.id %>
-	<h1>Desidered Books</h1>
+	<% if user_signed_in? && @user.id == current_user.id %>
+		<p></p>
+	<% else %>
+		<h1>Desidered Books</h1>
 
-	<table>
-	  <thead>
-	    <tr>
-	      <th>Nome</th>
-	      <th>Autore</th>
-	      <th>Genere</th>
-	      <th>Anno</th>
-	      <th>Isbn</th>
-	      <th>User</th>
-	      <th colspan="3"></th>
-	    </tr>
-	  </thead>
+		<table>
+		  <thead>
+		    <tr>
+		      <th>Nome</th>
+		      <th>Autore</th>
+		      <th>Genere</th>
+		      <th>Anno</th>
+		      <th>Isbn</th>
+		      <th>User</th>
+		      <th colspan="3"></th>
+		    </tr>
+		  </thead>
 
-	  <tbody>
-	    <% @user.DesideredBook.each do |desidered_book| %>
-	      <tr>
-	        <td><%= desidered_book.nome %></td>
-	        <td><%= desidered_book.autore %></td>
-	        <td><%= desidered_book.genere %></td>
-	        <td><%= desidered_book.anno %></td>
-	        <td><%= desidered_book.ISBN %></td>
-	        <td><%= desidered_book.user.username %></td>
-	        <td><%= link_to 'Show', desidered_book %></td>
-	      </tr>
-	    <% end %>
-	  </tbody>
-	</table>
+		  <tbody>
+		    <% @user.DesideredBook.each do |desidered_book| %>
+		      <tr>
+		        <td><%= desidered_book.nome %></td>
+		        <td><%= desidered_book.autore %></td>
+		        <td><%= desidered_book.genere %></td>
+		        <td><%= desidered_book.anno %></td>
+		        <td><%= desidered_book.ISBN %></td>
+		        <td><%= desidered_book.user.username %></td>
+		        <td><%= link_to 'Show', desidered_book %></td>
+		      </tr>
+		    <% end %>
+		  </tbody>
+		</table>
 
-	<h1>Proposed Books</h1>
+		<h1>Proposed Books</h1>
 
-	<table>
-	  <thead>
-	    <tr>
-	      <th>Nome</th>
-	      <th>Autore</th>
-	      <th>Genere</th>
-	      <th>Stato</th>
-	      <th>Anno</th>
-	      <th>Isbn</th>
-	      <th>User</th>
-	      <th colspan="3"></th>
-	    </tr>
-	  </thead>
+		<table>
+		  <thead>
+		    <tr>
+		      <th>Nome</th>
+		      <th>Autore</th>
+		      <th>Genere</th>
+		      <th>Stato</th>
+		      <th>Anno</th>
+		      <th>Isbn</th>
+		      <th>User</th>
+		      <th colspan="3"></th>
+		    </tr>
+		  </thead>
 
-	  <tbody>
-	    <% @user.ProposedBook.each do |proposed_book| %>
-	      <tr>
-	        <td><%= proposed_book.nome %></td>
-	        <td><%= proposed_book.autore %></td>
-	        <td><%= proposed_book.genere %></td>
-	        <td><%= proposed_book.stato %></td>
-	        <td><%= proposed_book.anno %></td>
-	        <td><%= proposed_book.ISBN %></td>
-	        <td><%= proposed_book.user.username %></td>
-	        <td><%= link_to 'Show', proposed_book %></td>
-	      </tr>
-	    <% end %>
-	  </tbody>
-	</table>
+		  <tbody>
+		    <% @user.ProposedBook.each do |proposed_book| %>
+		      <tr>
+		        <td><%= proposed_book.nome %></td>
+		        <td><%= proposed_book.autore %></td>
+		        <td><%= proposed_book.genere %></td>
+		        <td><%= proposed_book.stato %></td>
+		        <td><%= proposed_book.anno %></td>
+		        <td><%= proposed_book.ISBN %></td>
+		        <td><%= proposed_book.user.username %></td>
+		        <td><%= link_to 'Show', proposed_book %></td>
+		      </tr>
+		    <% end %>
+		  </tbody>
+		</table>
 	<%end%>
 </div>

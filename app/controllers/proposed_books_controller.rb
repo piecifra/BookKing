@@ -7,6 +7,10 @@ class ProposedBooksController < ApplicationController
     @proposed_books = current_user.ProposedBook
   end
 
+  def search
+    @proposed_books = ProposedBook.where(["nome LIKE ?","%#{params[:search]}%"])
+  end
+
   # GET /proposed_books/1
   # GET /proposed_books/1.json
   def show

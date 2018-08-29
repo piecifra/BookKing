@@ -1,0 +1,8 @@
+<p>Risultati</p>
+<% if @proposed_books.empty? %>
+	<p>No results</p>
+<% else %>
+	    <% @proposed_books.each do |book| %>
+	        <p><%= book.nome %> <%= link_to 'Show', book %> </p>
+	    <% end %>
+<% end %>

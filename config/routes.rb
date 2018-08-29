@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   resources :proposed_books
   resources :desidered_books
   devise_for :users
-  get 'welcome/userssearch'
+  get 'userssearch', :to => 'users#search'
+  get 'booksearch', :to => 'proposed_books#search'
   get 'welcome/hello'
   root 'welcome#hello#'
   resources :users

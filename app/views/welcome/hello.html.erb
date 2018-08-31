@@ -11,8 +11,20 @@
 
 <p>Cerca libro</p>
 <%= form_tag booksearch_path, :method => 'get' do %>
-<p>
-	<%= text_field_tag :search, params[:search] %>
-	<%= submit_tag "Search", :search => nil %>
-</p>
+	<p>
+		<%= text_field_tag :search, params[:search] %>
+		<%= submit_tag "Search", :search => nil %>
+	</p>
+<% end %>
+
+<% if user_signed_in? %>
+	<% if !@suggest.empty? %>
+		<p>Suggerimenti</p>
+		<% @suggest.each do |book| %>
+			<%= book.nome %>
+			<%= link_to 'Show', book %>
+		<% end %>
+	<% else %>
+		<p>Nessun suggerimento disponibile</p>
+	<% end %>
 <% end %>

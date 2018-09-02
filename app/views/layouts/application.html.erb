@@ -15,7 +15,7 @@
 	<%= link_to "Profilo", current_user, class: 'button' %>
 	<%= link_to "Lista desideri", desidered_books_path, class: 'button' %>
 	<%= link_to "Lista Proposte", proposed_books_path, class: 'button' %>
-	<%= link_to "Miei scambi", root_path, class: 'button' %>
+	<%= link_to "Miei scambi", proposals_path, class: 'button' %>
 	<%= link_to "Logut", destroy_user_session_path, :method => :delete %>
 	<% else %>
 	<%= link_to "Home", root_path, class: 'button' %>

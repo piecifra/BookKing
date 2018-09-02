@@ -1,0 +1,27 @@
+<h1>Proposte Ricevute</h1>
+<% if @proposal.empty? %>
+	<p>Nessuna proposta ricevuta</p>
+<% else %>
+	<% @proposal.each do |pr| %>
+		<%= pr.id %>
+		<%= pr.libromittente.nome %>
+		<%= pr.mittente.username %>
+		<%= pr.librodestinatario.nome %>
+		<%= link_to 'Visualizza libro', pr.libromittente, class: 'button'  %>
+		<%= button_to 'Accetta', :controller => "proposals", :action => "accetta", :proposal_id => pr.id, :method=>:post  %>
+		<%= button_to 'Rifiuta', :controller => "proposals", :action => "rifiuta", :proposal_id => pr.id, :method=>:post  %>
+	<% end %>
+<% end %>
+
+<h1>Scambi Effettuati</h1>
+	<% if @exchange.empty? %>
+	<p>Nessuno scambio effettuato</p>
+<% else %>
+	<% @exchange.each do |e| %>
+		<p>
+		<%= e.id %>
+		<%= e.libromittente %>
+		<%= e.librodestinatario %>
+		</p>
+	<% end %>
+<% end %>

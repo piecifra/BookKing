@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180827194753) do
+ActiveRecord::Schema.define(version: 20180902173302) do
 
   create_table "desidered_books", force: :cascade do |t|
     t.string "nome"
@@ -22,6 +22,30 @@ ActiveRecord::Schema.define(version: 20180827194753) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_desidered_books_on_user_id"
+  end
+
+  create_table "exchanges", force: :cascade do |t|
+    t.integer "mittente_id"
+    t.integer "destinatario_id"
+    t.string "libromittente"
+    t.string "librodestinatario"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["destinatario_id"], name: "index_exchanges_on_destinatario_id"
+    t.index ["mittente_id"], name: "index_exchanges_on_mittente_id"
+  end
+
+  create_table "proposals", force: :cascade do |t|
+    t.integer "mittente_id"
+    t.integer "destinatario_id"
+    t.integer "libromittente_id"
+    t.integer "librodestinatario_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["destinatario_id"], name: "index_proposals_on_destinatario_id"
+    t.index ["librodestinatario_id"], name: "index_proposals_on_librodestinatario_id"
+    t.index ["libromittente_id"], name: "index_proposals_on_libromittente_id"
+    t.index ["mittente_id"], name: "index_proposals_on_mittente_id"
   end
 
   create_table "proposed_books", force: :cascade do |t|

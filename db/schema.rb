@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180902173302) do
+ActiveRecord::Schema.define(version: 20180903194638) do
 
   create_table "desidered_books", force: :cascade do |t|
     t.string "nome"
     t.string "autore"
     t.string "genere"
     t.integer "anno"
-    t.integer "ISBN"
+    t.string "ISBN", limit: 13
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20180902173302) do
     t.string "genere"
     t.string "stato"
     t.integer "anno"
-    t.integer "ISBN"
+    t.string "ISBN", limit: 13
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

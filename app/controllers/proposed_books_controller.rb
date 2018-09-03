@@ -29,15 +29,43 @@ class ProposedBooksController < ApplicationController
   # POST /proposed_books
   # POST /proposed_books.json
   def create
-    @proposed_book = ProposedBook.new(proposed_book_params)
 
-    respond_to do |format|
-      if @proposed_book.save
-        format.html { redirect_to @proposed_book, notice: 'Proposed book was successfully created.' }
-        format.json { render :show, status: :created, location: @proposed_book }
+    if params[:commit] == 'Crea'
+      @proposed_book = ProposedBook.new(proposed_book_params)
+
+      respond_to do |format|
+        if @proposed_book.save
+          format.html { redirect_to @proposed_book, notice: 'Proposed book was successfully created.' }
+          format.json { render :show, status: :created, location: @proposed_book }
+        else
+          format.html { render :new }
+          format.json { render json: @proposed_book.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      require 'open-uri'
+      @data = JSON.parse(URI.parse('https://www.googleapis.com/books/v1/volumes?q=isbn:' + proposed_book_params[:ISBN]).read)
+      if @data['totalItems'] > 0
+        @b = @data['items'][0]['volumeInfo']
+        p = { 'nome' => @b['title'],
+              'autore' => @b['authors'][0],
+              'genere' => proposed_book_params[:genere],
+              'anno' => @b['publishedDate'],
+              'stato' => proposed_book_params[:stato],
+              'ISBN' => proposed_book_params[:ISBN],
+              'user_id' => proposed_book_params[:user_id]}
+        @proposed_book = ProposedBook.new(p)
+        respond_to do |format|
+          if @proposed_book.save
+            format.html { redirect_to @proposed_book, notice: 'Proposed book was successfully created.' }
+            format.json { render :show, status: :created, location: @proposed_book }
+          else
+            format.html { render :new }
+            format.json { render json: @proposed_book.errors, status: :unprocessable_entity }
+          end
+        end
       else
-        format.html { render :new }
-        format.json { render json: @proposed_book.errors, status: :unprocessable_entity }
+        redirect_to root_path
       end
     end
   end

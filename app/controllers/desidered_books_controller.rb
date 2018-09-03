@@ -24,15 +24,41 @@ class DesideredBooksController < ApplicationController
   # POST /desidered_books
   # POST /desidered_books.json
   def create
-    @desidered_book = DesideredBook.new(desidered_book_params)
+    if params[:commit] == 'Crea'
+      @desidered_book = ProposedBook.new(desidered_book_params)
 
-    respond_to do |format|
-      if @desidered_book.save
-        format.html { redirect_to @desidered_book, notice: 'Desidered book was successfully created.' }
-        format.json { render :show, status: :created, location: @desidered_book }
+      respond_to do |format|
+        if @desidered_book.save
+          format.html { redirect_to @desidered_book, notice: 'Desidered book was successfully created.' }
+          format.json { render :show, status: :created, location: @desidered_book }
+        else
+          format.html { render :new }
+          format.json { render json: @desidered_book.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      require 'open-uri'
+      @data = JSON.parse(URI.parse('https://www.googleapis.com/books/v1/volumes?q=isbn:' + desidered_book_params[:ISBN]).read)
+      if @data['totalItems'] > 0
+        @b = @data['items'][0]['volumeInfo']
+        p = { 'nome' => @b['title'],
+              'autore' => @b['authors'][0],
+              'genere' => desidered_book_params[:genere],
+              'anno' => @b['publishedDate'],
+              'ISBN' => desidered_book_params[:ISBN],
+              'user_id' => desidered_book_params[:user_id]}
+        @desidered_book = DesideredBook.new(p)
+        respond_to do |format|
+          if @desidered_book.save
+            format.html { redirect_to @desidered_book, notice: 'Proposed book was successfully created.' }
+            format.json { render :show, status: :created, location: @desidered_book }
+          else
+            format.html { render :new }
+            format.json { render json: @desidered_book.errors, status: :unprocessable_entity }
+          end
+        end
       else
-        format.html { render :new }
-        format.json { render json: @desidered_book.errors, status: :unprocessable_entity }
+        redirect_to root_path
       end
     end
   end

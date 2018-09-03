@@ -8,7 +8,8 @@ class ProposedBooksController < ApplicationController
   end
 
   def search
-    @proposed_books = ProposedBook.where(["nome LIKE ?","%#{params[:search]}%"])
+    ricerca = params['ricerca']
+    @proposed_books = ProposedBook.where([ ricerca + " LIKE ?","%#{params[:search]}%"])
   end
 
   # GET /proposed_books/1

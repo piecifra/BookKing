@@ -5,7 +5,8 @@ class UsersController < ApplicationController
 	end
 
 	def search
-		@users = User.where(["username LIKE ?","%#{params[:search]}%"])
+		ricerca = params['ricerca']
+		@users = User.where([ricerca + " LIKE ?","%#{params[:search]}%"])
 	end
 	
 end

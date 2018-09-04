@@ -48,9 +48,15 @@ class ProposedBooksController < ApplicationController
       @data = JSON.parse(URI.parse('https://www.googleapis.com/books/v1/volumes?q=isbn:' + proposed_book_params[:ISBN]).read)
       if @data['totalItems'] > 0
         @b = @data['items'][0]['volumeInfo']
+        @g = ''
+        if @b.key?('categories')
+          @g = @b['categories'][0]
+        else 
+          @g = proposed_book_params[:genere]
+        end
         p = { 'nome' => @b['title'],
               'autore' => @b['authors'][0],
-              'genere' => proposed_book_params[:genere],
+              'genere' => @g,
               'anno' => @b['publishedDate'],
               'stato' => proposed_book_params[:stato],
               'ISBN' => proposed_book_params[:ISBN],

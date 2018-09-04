@@ -23,8 +23,11 @@
 	<% if !@suggest.empty? %>
 		<p>Suggerimenti</p>
 		<% @suggest.each do |book| %>
-			<%= book.nome %>
-			<%= link_to 'Show', book %>
+			<p>
+				<%= book.nome %>
+				<%= book.user.username %>
+				<%= link_to 'Show', book %>
+			</p>
 		<% end %>
 	<% else %>
 		<p>Nessun suggerimento disponibile</p>

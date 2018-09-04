@@ -2,8 +2,9 @@ class WelcomeController < ApplicationController
   
   	def hello
   		if user_signed_in?
+  			@suggest = []
 	  		current_user.DesideredBook.each do |book|
-	  			@suggest = ProposedBook.where(["nome LIKE ?","%#{book.nome}%"])
+	  			@suggest += ProposedBook.where(["nome LIKE ?","%#{book.nome}%"])
 	  		end
 	  	end
   	end

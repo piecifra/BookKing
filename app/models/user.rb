@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :DesideredBook
   has_many :Proposal
   has_many :Exchange
+  has_many :UserReviews
   
 	def self.search(search)
 	  if search

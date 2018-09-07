@@ -36,6 +36,7 @@ class ProposalsController < ApplicationController
 		@p.destroy
 		redirect_to root_path
 	end
+	
   private
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -14,7 +14,7 @@
 <%= form_tag booksearch_path, :method => 'get' do %>
 	<p>
 		<%= text_field_tag :search, params[:search] %>
-        <%= select_tag "ricerca", options_for_select([ "nome", "autore", "genere", "anno" ], "Nnme") %>
+        <%= select_tag "ricerca", options_for_select([ "nome", "autore", "genere", "anno" ], "Nome") %>
 		<%= submit_tag "Cerca", :search => nil %>
 	</p>
 <% end %>

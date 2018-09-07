@@ -15,7 +15,7 @@
 	<% if user_signed_in? && @user.id == current_user.id %>
 		<p></p>
 	<% else %>
-		<h1>Desidered Books</h1>
+		<h1>Libri desiderati</h1>
 
 		<table>
 		  <thead>
@@ -45,7 +45,7 @@
 		  </tbody>
 		</table>
 
-		<h1>Proposed Books</h1>
+		<h1>Libri proposti</h1>
 
 		<table>
 		  <thead>
@@ -77,4 +77,28 @@
 		  </tbody>
 		</table>
 	<%end%>
+
+
+	<% if user_signed_in? && current_user.id != @user.id%>
+		<h3>Recensisci Utente</h3>
+		<%= form_for :user_review, :url => {:action => 'create', :controller => 'user_reviews'} do |f| %>
+			<%= f.select "rating", options_for_select([ "1", "2", "3", "4", "5"], "3") %>
+			<%= f.text_field :comment, :size => 150 %>
+			<%= f.hidden_field :user_id, :value => @user.id %>
+			<%= f.hidden_field :reviewer, :value => current_user.username %>
+			<%= f.submit "Conferma", :action => :create %>
+	    <% end %>
+    <% end %>
+
+    <h3>Recensioni Utente</h3>
+    <% @user.UserReviews.each do |r| %>
+    	<p>
+	    	Voto: <%= r.rating %>
+	    	Da: <%= r.reviewer %>
+	    </p>
+	    <p>
+	    	Commento: <%= r.comment %>
+	    </p>
+    <% end %>
+    
 </div>

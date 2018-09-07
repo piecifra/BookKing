@@ -2,6 +2,13 @@
 <% if @proposed_books.empty? %>
 	<p>No results</p>
 <% else %>
+		<%= form_tag booksearch_path, :method => 'get' do %>
+			<%= select_tag "Ordina", options_for_select([ "nome", "autore", "genere", "anno"], "nome") %>
+			<%= select_tag "AscDesc", options_for_select([ "crescente", "decrescente"], "crescente") %>
+			<%= hidden_field_tag 'ricerca', @ricerca  %>
+			<%= hidden_field_tag 'search', @value  %>
+			<%= submit_tag "Ordina", :search => nil %>
+		<% end %>
 	    <% @proposed_books.each do |book| %>
 	        <p><%= book.nome %> <%= link_to 'Show', book %> </p>
 	    <% end %>

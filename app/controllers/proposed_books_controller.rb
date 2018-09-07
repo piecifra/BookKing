@@ -8,8 +8,19 @@ class ProposedBooksController < ApplicationController
   end
 
   def search
-    ricerca = params['ricerca']
-    @proposed_books = ProposedBook.where([ ricerca + " LIKE ?","%#{params[:search]}%"])
+    @ricerca = params['ricerca']
+    @value = params[:search]
+    ascdesc = ' ASC'
+    ord = 'nome'
+    if params['Ordina'] != nil
+      ord = params['Ordina']
+      if params['AscDesc'] == 'decrescente'
+        ascdesc = ' DESC'
+      end
+    end
+    puts ord + ascdesc
+    @proposed_books = ProposedBook.where([@ricerca + " LIKE ?","%#{@value}%"]).order(ord + ascdesc)
+
   end
 
   # GET /proposed_books/1

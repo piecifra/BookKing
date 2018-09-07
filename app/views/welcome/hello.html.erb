@@ -21,14 +21,41 @@
 
 <% if user_signed_in? %>
 	<% if !@suggest.empty? %>
-		<p>Suggerimenti</p>
-		<% @suggest.each do |book| %>
-			<p>
-				<%= book.nome %>
-				<%= book.user.username %>
-				<%= link_to 'Show', book %>
-			</p>
-		<% end %>
+		<h2>Suggerimenti</h2>
+		<p>
+			<%= form_tag root_path, :method => 'get' do %>
+				<%= select_tag "Ordina", options_for_select([ "nome", "autore", "genere", "anno"], "nome") %>
+				<%= select_tag "AscDesc", options_for_select([ "crescente", "decrescente"], "crescente") %>
+				<%= submit_tag "Ordina", :search => nil %>
+			<% end %>
+		</p>
+		<table>
+		  <thead>
+		    <tr>
+		      <th>Nome</th>
+		      <th>Autore</th>
+		      <th>Genere</th>
+		      <th>Anno</th>
+		      <th>Isbn</th>
+		      <th>Utente</th>
+		      <th colspan="3"></th>
+		    </tr>
+		  </thead>
+
+		  <tbody>
+		    <% @suggest.each do |suggest| %>
+		      <tr>
+		        <td><%= suggest.nome %></td>
+		        <td><%= suggest.autore %></td>
+		        <td><%= suggest.genere %></td>
+		        <td><%= suggest.anno %></td>
+		        <td><%= suggest.ISBN %></td>
+		        <td><%= suggest.user.username %></td>
+		        <td><%= link_to 'Show', suggest %></td>
+		      </tr>
+		    <% end %>
+		  </tbody>
+		</table>
 	<% else %>
 		<p>Nessun suggerimento disponibile</p>
 	<% end %>

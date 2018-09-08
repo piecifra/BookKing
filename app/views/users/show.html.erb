@@ -8,7 +8,9 @@
 	<% if user_signed_in? %>
 		<% if current_user.id == @user.id %>
 		<%= link_to 'Edit Profile', edit_user_registration_path %>
-		<% end %>
+		<% else %>
+		<%= link_to 'Segnala utente', new_report_path(:user => @user.id) %>
+		<%end%>
 	<% end %>
 
 
@@ -82,23 +84,15 @@
 	<% if user_signed_in? && current_user.id != @user.id%>
 		<h3>Recensisci Utente</h3>
 		<%= form_for :user_review, :url => {:action => 'create', :controller => 'user_reviews'} do |f| %>
-			<%= f.select "rating", options_for_select([ "1", "2", "3", "4", "5"], "3") %>
-			<%= f.text_field :comment, :size => 150 %>
+			<p><%= f.select "rating", options_for_select([ "1", "2", "3", "4", "5"], "3") %></p>
+			<p><%= f.text_area :comment, :size => 150 %></p>
 			<%= f.hidden_field :user_id, :value => @user.id %>
 			<%= f.hidden_field :reviewer, :value => current_user.username %>
 			<%= f.submit "Conferma", :action => :create %>
 	    <% end %>
     <% end %>
 
-    <h3>Recensioni Utente</h3>
-    <% @user.UserReviews.each do |r| %>
-    	<p>
-	    	Voto: <%= r.rating %>
-	    	Da: <%= r.reviewer %>
-	    </p>
-	    <p>
-	    	Commento: <%= r.comment %>
-	    </p>
-    <% end %>
+    <h3>Recensioni </h3>
+    <%= render :partial => 'user_reviews/list'%>
     
 </div>

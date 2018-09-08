@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  resources :contacts
+  resources :reports
   get 'user_review/create'
-
   get 'user_review/new'
 
   get 'exchange/create'
@@ -8,6 +9,8 @@ Rails.application.routes.draw do
   get 'exchange/new'
 
   get 'exchange/index'
+
+  get 'userreview', :to => 'user_reviews#index'
 
   resources :proposed_books
   resources :desidered_books
@@ -19,8 +22,9 @@ Rails.application.routes.draw do
   get 'userssearch', :to => 'users#search'
   get 'booksearch', :to => 'proposed_books#search'
   get 'welcome/hello'
+  get 'odinarecensioni', :to => 'user_reviews#ordina'
+
   post 'proposal', :to => 'proposals#create'
-  post 'user_review', :to => 'user_reviews#create'
 
   post 'accetta', :to => 'proposals#accetta'
   post 'rifiuta', :to => 'proposals#rifiuta'

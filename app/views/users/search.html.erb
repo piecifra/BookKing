@@ -3,7 +3,7 @@
 	<p>No results</p>
 <% else %>
 		<%= form_tag userssearch_path, :method => 'get' do %>
-			<%= select_tag "Ordina", options_for_select([ "username", "indirizzo", "anno", "email"], "nome") %>
+			<%= select_tag "Ordina", options_for_select([ "username", "indirizzo", "annonascita", "email"], "nome") %>
 			<%= select_tag "AscDesc", options_for_select([ "crescente", "decrescente"], "crescente") %>
 			<%= hidden_field_tag 'ricerca', @ricerca  %>
 			<%= hidden_field_tag 'search', @value  %>

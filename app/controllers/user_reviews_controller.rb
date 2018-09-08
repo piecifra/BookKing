@@ -3,8 +3,19 @@ class UserReviewsController < ApplicationController
 	def create
 		@review = UserReview.new(user_review_params)
 		@review.save
-		puts @review.errors.messages
 		redirect_to root_path
+	end
+
+	def ordina
+	end
+
+	def index
+		@reviews = UserReview.all
+	end
+
+	def show
+		puts 'aaaaaa'
+		@reviews = UserReview.all
 	end
 
 	def new

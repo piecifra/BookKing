@@ -30,5 +30,10 @@
   <%= @desidered_book.user.username %>
 </p>
 
-<%= link_to 'Edit', edit_desidered_book_path(@desidered_book) %> |
-<%= link_to 'Back', desidered_books_path %>
+<%  if can? :update, @desidered_book%>
+<%= link_to 'Modifica', desidered_book_path(@desidered_book) %> 
+<% end %>
+<%  if can? :destroy, @desidered_book%>
+<%= link_to 'Elimina', destroy_desidered_book_path(@desidered_book) %> 
+<% end %>
+<%= link_to 'Indietro', desidered_book_path %>

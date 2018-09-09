@@ -19,6 +19,11 @@
           <td><%= r.rating %></td>
           <td><%= r.reviewer %></td>
           <td><%= r.comment %></td>
+          <td>
+          <% if can? :delete, r %>
+            <%= link_to 'Elimina', destroy_user_review_path(r) %>
+          <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>

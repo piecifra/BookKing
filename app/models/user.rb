@@ -1,4 +1,9 @@
 class User < ApplicationRecord
+
+  before_create :set_default_role
+  # or 
+  # before_validation :set_default_role 
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -7,6 +12,12 @@ class User < ApplicationRecord
 
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/assets/:style/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
+
+  Roles = [ :admin , :user, :guest ]
+  def is?( requested_role )
+    self.role == requested_role.to_s
+  end
 
   has_many :ProposedBook
   has_many :DesideredBook
@@ -34,6 +45,11 @@ class User < ApplicationRecord
           )
       end
       user
+  end
+
+  private
+  def set_default_role
+    self.role = 'user'
   end
 
 end

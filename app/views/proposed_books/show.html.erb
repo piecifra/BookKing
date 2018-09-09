@@ -35,8 +35,13 @@
   <%= @proposed_book.user.username %>
 </p>
 
-<%= link_to 'Edit', edit_proposed_book_path(@proposed_book) %> |
-<%= link_to 'Back', proposed_books_path %>
+<%  if can? :update, @proposed_book%>
+<%= link_to 'Modifica', edit_proposed_book_path(@proposed_book) %> 
+<% end %>
+<%  if can? :destroy, @proposed_book%>
+<%= link_to 'Elimina', destroy_proposed_book_path(@proposed_book) %> 
+<% end %>
+<%= link_to 'Indietro', proposed_books_path %>
 
 
 <h4>Proponi Scambio</h4>

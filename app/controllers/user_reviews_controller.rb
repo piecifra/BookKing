@@ -14,12 +14,19 @@ class UserReviewsController < ApplicationController
 	end
 
 	def show
-		puts 'aaaaaa'
 		@reviews = UserReview.all
 	end
 
 	def new
 		@review = UserReview.new
+	end
+
+	def destroy
+	    @user_review.destroy
+	    respond_to do |format|
+	      format.html { redirect_to desidered_books_url, notice: 'Desidered book was successfully destroyed.' }
+	      format.json { head :no_content }
+	    end
 	end
 
 	private

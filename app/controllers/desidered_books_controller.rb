@@ -25,7 +25,7 @@ class DesideredBooksController < ApplicationController
   # POST /desidered_books.json
   def create
     if params[:commit] == 'Crea'
-      @desidered_book = ProposedBook.new(desidered_book_params)
+      @desidered_book = DesideredBook.new(desidered_book_params)
 
       respond_to do |format|
         if @desidered_book.save

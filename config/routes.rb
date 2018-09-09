@@ -13,15 +13,15 @@ Rails.application.routes.draw do
   get 'userreview', :to => 'user_reviews#index'
 
   resources :proposed_books
-  get 'destroy_proposed_book', :to => 'proposed_books#destroy'
+  delete 'destroy_proposed_book', :to => 'proposed_books#destroy'
 
   resources :desidered_books
-  get 'destroy_desidered_book', :to => 'desidered_book#destroy'
+  delete 'destroy_desidered_book', :to => 'desidered_book#destroy'
 
   resources :proposals
   resources :exchanges
   resources :user_reviews
-  get 'destroy_user_review', :to => 'user_reviews#destroy'
+  delete 'destroy_user_review', :to => 'user_reviews#destroy'
   
   resources :users
   get 'userssearch', :to => 'users#search'

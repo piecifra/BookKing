@@ -41,10 +41,16 @@
     <%= form.number_field :ISBN, id: :proposed_book_ISBN %>
   </div>
 
-  <%= form.hidden_field :user_id, :value => current_user.id %>
+  <% if !proposed_book.nil? %>
+    <%= form.hidden_field :user_id, :value => current_user.id %>
+  <% else %>
+    <%= form.hidden_field :user_id, :value => proposed_book.user.id %>
+  <% end %>
 
   <div class="actions">
-    <%= form.submit 'Crea' %>
-    <%= form.submit 'Crea tramite ISBN' %>
+    <%= form.submit 'Salva' %>
+    <%= form.submit 'Salva tramite ISBN' %>
   </div>
+
+
 <% end %>

@@ -44,7 +44,7 @@ class ProposedBooksController < ApplicationController
   # POST /proposed_books.json
   def create
 
-    if params[:commit] == 'Crea'
+    if params[:commit] == 'Salva'
       @proposed_book = ProposedBook.new(proposed_book_params)
 
       respond_to do |format|
@@ -93,6 +93,7 @@ class ProposedBooksController < ApplicationController
   # PATCH/PUT /proposed_books/1
   # PATCH/PUT /proposed_books/1.json
   def update
+    puts 'whyyyy'
     respond_to do |format|
       if @proposed_book.update(proposed_book_params)
         format.html { redirect_to @proposed_book, notice: 'Proposed book was successfully updated.' }

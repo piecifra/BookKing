@@ -1,34 +1,43 @@
-<p> HOME <p>
+<div class="center jumbotron">
 
-<p>Cerca utente</p>
+<h1> Welcome to BookKing ! <h1>
+
+<h2> BookKing is a website where you can exhange books.
+	<br>
+	In this way you will never stay without reading!
+</h2>
+
+</div>
+
+<h3>Cerca utente:</h3>
 <%= form_tag userssearch_path, :method => 'get' do %>
-    <p>
+    <div>
         <%= text_field_tag :search, params[:search] %>
         <%= select_tag "ricerca", options_for_select([ "username", "email", "indirizzo", "anno" ], "username") %>
-        <%= submit_tag "Cerca", :name => nil %>
-    </p>
+        <%= submit_tag "Cerca", :name => nil , class: "btn btn-log btn-primary"%>
+    </div>
 	
 <% end %>
 
-<p>Cerca libro</p>
+<h3>Cerca libro:</h3>
 <%= form_tag booksearch_path, :method => 'get' do %>
-	<p>
+	<div>
 		<%= text_field_tag :search, params[:search] %>
         <%= select_tag "ricerca", options_for_select([ "nome", "autore", "genere", "anno" ], "Nome") %>
-		<%= submit_tag "Cerca", :search => nil %>
-	</p>
+		<%= submit_tag "Cerca", :search => nil , class: "btn btn-log btn-primary"%>
+	</div>
 <% end %>
 
 <% if user_signed_in? %>
 	<% if !@suggest.empty? %>
 		<h2>Suggerimenti</h2>
-		<p>
+		<div>
 			<%= form_tag root_path, :method => 'get' do %>
 				<%= select_tag "Ordina", options_for_select([ "nome", "autore", "genere", "anno"], "nome") %>
 				<%= select_tag "AscDesc", options_for_select([ "crescente", "decrescente"], "crescente") %>
 				<%= submit_tag "Ordina", :search => nil %>
 			<% end %>
-		</p>
+		</div>
 		<table>
 		  <thead>
 		    <tr>

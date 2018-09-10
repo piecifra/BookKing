@@ -36,6 +36,9 @@ gem 'jbuilder', '~> 2.5'
 #############################################
 #Gems
 
+#Bootstrap
+gem 'bootstrap-sass', '3.3.7'
+
 #Auth
 gem 'devise'
 

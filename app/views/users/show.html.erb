@@ -3,10 +3,10 @@
 
 		<li><%= image_tag(@user.avatar.url(:thumb)) %></li>
 		<br>
-		<p>Email: <%= @user.email %></p>
-		<p>Username: <%= @user.username %> </p>
-		<p>Indirizzo: <%= @user.indirizzo %> </p>
-		<p>Anno di nascita: <%= @user.annonascita %> </p>
+		<p><strong>Email:</strong> <%= @user.email %></p>
+		<p><strong>Username:</strong> <%= @user.username %> </p>
+		<p><strong>Indirizzo:</strong> <%= @user.indirizzo %> </p>
+		<p><strong>Anno di nascita:</strong> <%= @user.annonascita %> </p>
 
 		<% if user_signed_in? %>
 			<%  if can? :update, @user%>
@@ -87,13 +87,13 @@
 				        <td><%= proposed_book.ISBN %></td>
 				        <td><%= proposed_book.user.username %></td>
 				        <% if can? :read, proposed_book %>
-				        <td><%= link_to 'Mostra', proposed_book %></td>
+				        <td><%= link_to 'Mostra', proposed_book, class: "btn btn-warning" %></td>
 				        <% end %>
 				        <% if can? :update, proposed_book %>
-				        <td><%= link_to 'Modifica', edit_proposed_book_path(proposed_book) %></td>
+				        <td><%= link_to 'Modifica', edit_proposed_book_path(proposed_book), class: "btn btn-warning" %></td>
 				        <% end %>
 				        <% if can? :delete, proposed_book %>
-				        <td><%= link_to 'Elimina', proposed_book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				        <td><%= link_to 'Elimina', proposed_book, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-warning" %></td>
 				        <% end %>
 				      </tr>
 				    <% end %>

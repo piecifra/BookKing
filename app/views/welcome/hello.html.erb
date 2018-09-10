@@ -28,6 +28,7 @@
 	</div>
 <% end %>
 
+<br>
 <% if user_signed_in? %>
 	<% if !@suggest.empty? %>
 		<h2>Suggerimenti</h2>
@@ -35,10 +36,10 @@
 			<%= form_tag root_path, :method => 'get' do %>
 				<%= select_tag "Ordina", options_for_select([ "nome", "autore", "genere", "anno"], "nome") %>
 				<%= select_tag "AscDesc", options_for_select([ "crescente", "decrescente"], "crescente") %>
-				<%= submit_tag "Ordina", :search => nil %>
+				<%= submit_tag "Ordina", :search => nil, class: "btn" %>
 			<% end %>
 		</div>
-		<table>
+		<table class="table table-striped table-bordered">
 		  <thead>
 		    <tr>
 		      <th>Nome</th>
@@ -60,12 +61,12 @@
 		        <td><%= suggest.anno %></td>
 		        <td><%= suggest.ISBN %></td>
 		        <td><%= suggest.user.username %></td>
-		        <td><%= link_to 'Show', suggest %></td>
+		        <td><%= link_to 'Show', suggest , class: "btn btn-default"%></td>
 		      </tr>
 		    <% end %>
 		  </tbody>
 		</table>
 	<% else %>
-		<p>Nessun suggerimento disponibile</p>
+		<h4>Nessun suggerimento disponibile</h4>
 	<% end %>
 <% end %>

@@ -1,5 +1,5 @@
 class ProposedBooksController < ApplicationController
-  before_action :set_proposed_book, only: [:show, :edit, :update, :destroy]
+  before_action :set_proposed_book, only: [:show, :edit, :destroy, :update]
 
   # GET /proposed_books
   # GET /proposed_books.json
@@ -91,9 +91,8 @@ class ProposedBooksController < ApplicationController
   # PATCH/PUT /proposed_books/1
   # PATCH/PUT /proposed_books/1.json
   def update
-    @id = @proposed_book.user.id
     respond_to do |format|
-      if @proposed_book.update(proposed_book_params)
+      if @proposed_book.update(proposed_book_update_params)
         format.html { redirect_to @proposed_book, notice: 'Proposed book was successfully updated.' }
         format.json { render :show, status: :ok, location: @proposed_book }
       else
@@ -122,5 +121,9 @@ class ProposedBooksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def proposed_book_params
       params.require(:proposed_book).permit(:nome, :autore, :genere, :stato, :anno, :ISBN, :user_id)
+    end
+
+    def proposed_book_update_params
+      params.require(:proposed_book).permit(:nome, :autore, :genere, :stato, :anno, :ISBN)
     end
 end

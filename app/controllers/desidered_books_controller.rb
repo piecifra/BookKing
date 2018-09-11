@@ -68,10 +68,7 @@ class DesideredBooksController < ApplicationController
   # PATCH/PUT /desidered_books/1.json
   def update
     respond_to do |format|
-      puts desidered_book_params[:user_id]
-      desidered_book_params.delete :user_id
-      puts desidered_book_params[:user_id]
-      if @desidered_book.update(desidered_book_params)
+      if @desidered_book.update(desidered_book_update_params)
         format.html { redirect_to @desidered_book, notice: 'Desidered book was successfully updated.' }
         format.json { render :show, status: :ok, location: @desidered_book }
       else
@@ -100,5 +97,9 @@ class DesideredBooksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def desidered_book_params
       params.require(:desidered_book).permit(:nome, :autore, :genere, :anno, :ISBN, :user_id)
+    end
+
+    def desidered_book_update_params
+      params.require(:proposed_book).permit(:nome, :autore, :genere, :stato, :anno, :ISBN)
     end
 end

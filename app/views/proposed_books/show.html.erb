@@ -34,6 +34,6 @@
 <%= link_to 'Modifica', edit_proposed_book_path(@proposed_book) %> 
 <% end %>
 <%  if can? :destroy, @proposed_book%>
-<%= link_to 'Elimina', proposed_book, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Elimina', @proposed_book, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
 <%= link_to 'Indietro', proposed_book_path %>

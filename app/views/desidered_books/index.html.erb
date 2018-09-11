@@ -2,7 +2,7 @@
 
 <h1>Desidered Books</h1>
 
-<table>
+<table class="table table-striped table-bordered">
   <thead>
     <tr>
       <th>Nome</th>
@@ -24,9 +24,9 @@
         <td><%= desidered_book.anno %></td>
         <td><%= desidered_book.ISBN %></td>
         <td><%= desidered_book.user.username %></td>
-        <td><%= link_to 'Show', desidered_book %></td>
-        <td><%= link_to 'Edit', edit_desidered_book_path(desidered_book) %></td>
-        <td><%= link_to 'Destroy', desidered_book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', desidered_book, class: "btn btn-warning" %></td>
+        <td><%= link_to 'Edit', edit_desidered_book_path(desidered_book), class: "btn btn-warning" %></td>
+        <td><%= link_to 'Destroy', desidered_book, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-warning" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Desidered Book', new_desidered_book_path %>
+<%= link_to 'New Desidered Book', new_desidered_book_path, class: "btn btn-lg btn-primary" %>

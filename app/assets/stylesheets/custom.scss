@@ -117,10 +117,16 @@ footer ul li {
 }
 
 /* table */
+
 table {
   width: 40px;
 }
 
 th {
   text-align: center;
+}
+
+td {
+  height: 50px;
+  vertical-align: bottom;
 }

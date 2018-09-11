@@ -1,45 +1,39 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Proposed Books</h1>
+<p>
+  <strong>Nome:</strong>
+  <%= @proposed_book.nome %>
+</p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Autore</th>
-      <th>Genere</th>
-      <th>Stato</th>
-      <th>Anno</th>
-      <th>Isbn</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<p>
+  <strong>Autore:</strong>
+  <%= @proposed_book.autore %>
+</p>
 
-  <tbody>
-    <% @user_books.each do |proposed_book| %>
-      <tr>
-        <td><%= proposed_book.nome %></td>
-        <td><%= proposed_book.autore %></td>
-        <td><%= proposed_book.genere %></td>
-        <td><%= proposed_book.stato %></td>
-        <td><%= proposed_book.anno %></td>
-        <td><%= proposed_book.ISBN %></td>
-        <td><%= proposed_book.user.username %></td>
-        <% if can? :read, proposed_book %>
-        <td><%= link_to 'Show', proposed_book %></td>
-        <% end %>
-        <% if can? :update, proposed_book %>
-        <td><%= link_to 'Edit', edit_proposed_book_path(proposed_book) %></td>
-        <% end %>
-        <% if can? :delete, proposed_book %>
-        <td><%= link_to 'Destroy', proposed_book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<p>
+  <strong>Genere:</strong>
+  <%= @proposed_book.genere %>
+</p>
 
-<br>
+<p>
+  <strong>Anno:</strong>
+  <%= @proposed_book.anno %>
+</p>
 
-<%= link_to 'New Proposed Book', new_proposed_book_path %>
+<p>
+  <strong>Isbn:</strong>
+  <%= @proposed_book.ISBN %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @proposed_book.user.username %>
+</p>
+
+<%  if can? :update, @proposed_book%>
+<%= link_to 'Modifica', proposed_book_path(@proposed_book) %> 
+<% end %>
+<%  if can? :destroy, @proposed_book%>
+<%= link_to 'Elimina', destroy_proposed_book_path(@proposed_book) %> 
+<% end %>
+<%= link_to 'Indietro', proposed_book_path %>

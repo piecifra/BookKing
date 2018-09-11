@@ -2,7 +2,7 @@ Given("a ProposedBook exists called {string} with isbn {string} from user with {
   ProposedBook.create({:nome => string, :user_id => id, :ISBN => isbn})
 end 
 
-When /^I visit my list$/ do
+When /^I visit my proposed book list$/ do
   visit proposed_books_path
 end
 

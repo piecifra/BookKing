@@ -29,10 +29,10 @@
                 <td><%= link_to 'Show', desidered_book %></td>
                 <% end %>
                 <% if can? :update, desidered_book %>
-                <td><%= link_to 'Edit', edit_desidered_book_path(desidered_book) %></td>
+                <td><%= link_to 'Edit', edit_desidered_book_path(desidered_book), class: "btn btn-warning" %></td>
                 <% end %>
-                <% if can? :delete, desidered_book %>
-                <td><%= link_to 'Destroy', desidered_book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% if can? :delete, desidered_book, class: "btn btn-warning" %>
+                <td><%= link_to 'Destroy', desidered_book, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-warning" %></td>
                 <% end %>
               </tr>
             <% end %>

@@ -1,57 +1,45 @@
 <p id="notice"><%= notice %></p>
 
-<div class= "panel panel-default">
-  <div class= "panel-body">
+<h1>Proposed Books</h1>
 
-    <table class= "table table-striped table-bordered">
-          <thead>
-            <tr>
-              <th>Nome</th>
-              <th>Autore</th>
-              <th>Genere</th>
-              <th>Anno</th>
-              <th>Isbn</th>
-              <th>User</th>
-              <th colspan="3"></th>
-            </tr>
-          </thead>
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Autore</th>
+      <th>Genere</th>
+      <th>Stato</th>
+      <th>Anno</th>
+      <th>Isbn</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
-          <tbody>
-            <% @user.DesideredBook.each do |desidered_book| %>
-              <tr>
-                <td><%= desidered_book.nome %></td>
-                <td><%= desidered_book.autore %></td>
-                <td><%= desidered_book.genere %></td>
-                <td><%= desidered_book.anno %></td>
-                <td><%= desidered_book.ISBN %></td>
-                <td><%= desidered_book.user.username %></td>
-                <% if can? :read, desidered_book %>
-                <td><%= link_to 'Show', desidered_book %></td>
-                <% end %>
-                <% if can? :update, desidered_book %>
-                <td><%= link_to 'Edit', edit_desidered_book_path(desidered_book) %></td>
-                <% end %>
-                <% if can? :delete, desidered_book %>
-                <td><%= link_to 'Destroy', desidered_book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                <% end %>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-    </div>
-
-    <h3>Proponi Scambio: </h3>
-    <% if user_signed_in? %>
-      <% if current_user.id != @proposed_book.user.id %>
-
-        <%= form_for :proposal, :url => {:action => 'create', :controller => 'proposals'} do |f| %>
-          <%= f.collection_select :libromittente_id, @user_books, :id, :nome %>
-          <%= f.hidden_field :librodestinatario_id, :value => @proposed_book.id %>
-          <%= f.hidden_field :mittente_id, :value => current_user.id %>
-          <%= f.hidden_field :destinatario_id, :value => @proposed_book.user.id %>
-          <%= f.submit "Proponi", :action => :create, class: "btn btn-primary" %>
+  <tbody>
+    <% @user_books.each do |proposed_book| %>
+      <tr>
+        <td><%= proposed_book.nome %></td>
+        <td><%= proposed_book.autore %></td>
+        <td><%= proposed_book.genere %></td>
+        <td><%= proposed_book.stato %></td>
+        <td><%= proposed_book.anno %></td>
+        <td><%= proposed_book.ISBN %></td>
+        <td><%= proposed_book.user.username %></td>
+        <% if can? :read, proposed_book %>
+        <td><%= link_to 'Show', proposed_book %></td>
         <% end %>
-      <% end %>
+        <% if can? :update, proposed_book %>
+        <td><%= link_to 'Edit', edit_proposed_book_path(proposed_book) %></td>
+        <% end %>
+        <% if can? :delete, proposed_book %>
+        <td><%= link_to 'Destroy', proposed_book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
     <% end %>
-  </div>
-</div>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Proposed Book', new_proposed_book_path %>

@@ -36,7 +36,7 @@
     <%= form.number_field :ISBN, id: :desidered_book_ISBN %>
   </div>
 
-  <% if desidered_book.nil? %>
+  <% if !desidered_book.nil? %>
     <%= form.hidden_field :user_id, :value => current_user.id %>
   <% else %>
     <%= form.hidden_field :user_id, :value => desidered_book.user.id %>

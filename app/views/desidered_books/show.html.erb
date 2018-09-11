@@ -31,7 +31,7 @@
 </p>
 
 <%  if can? :update, @desidered_book%>
-<%= link_to 'Modifica', desidered_book_path(@desidered_book) %> 
+<%= link_to 'Modifica', edit_desidered_book_path(@desidered_book) %> 
 <% end %>
 <%  if can? :destroy, @desidered_book%>
 <%= link_to 'Elimina', destroy_desidered_book_path(@desidered_book) %> 

@@ -19,12 +19,13 @@ class DesideredBooksController < ApplicationController
 
   # GET /desidered_books/1/edit
   def edit
+
   end
 
   # POST /desidered_books
   # POST /desidered_books.json
   def create
-    if params[:commit] == 'Crea'
+    if params[:commit] == 'Salva'
       @desidered_book = DesideredBook.new(desidered_book_params)
 
       respond_to do |format|
@@ -67,6 +68,9 @@ class DesideredBooksController < ApplicationController
   # PATCH/PUT /desidered_books/1.json
   def update
     respond_to do |format|
+      puts desidered_book_params[:user_id]
+      desidered_book_params.delete :user_id
+      puts desidered_book_params[:user_id]
       if @desidered_book.update(desidered_book_params)
         format.html { redirect_to @desidered_book, notice: 'Desidered book was successfully updated.' }
         format.json { render :show, status: :ok, location: @desidered_book }

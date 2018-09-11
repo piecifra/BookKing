@@ -1,6 +1,7 @@
 class User < ApplicationRecord
 
   before_create :set_default_role
+  validates :username, :email, :password, presence: true
   # or 
   # before_validation :set_default_role 
 

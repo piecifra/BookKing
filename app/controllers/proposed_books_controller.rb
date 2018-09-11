@@ -90,7 +90,7 @@ class ProposedBooksController < ApplicationController
   # PATCH/PUT /proposed_books/1
   # PATCH/PUT /proposed_books/1.json
   def update
-    puts 'whyyyy'
+    @id = @proposed_book.user.id
     respond_to do |format|
       if @proposed_book.update(proposed_book_params)
         format.html { redirect_to @proposed_book, notice: 'Proposed book was successfully updated.' }

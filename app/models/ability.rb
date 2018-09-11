@@ -13,6 +13,8 @@ class Ability
         can :manage, User, id: user.id
         can :manage, DesideredBook, user_id: user.id
         can :manage, ProposedBook, user_id: user.id
+        can :read, ProposedBook
+        can :read, DesideredBook
         can :manage, Proposal
         can :manage, Exchange
         can :create, UserReview

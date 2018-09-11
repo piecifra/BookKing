@@ -26,6 +26,7 @@ class ProposedBooksController < ApplicationController
   # GET /proposed_books/1
   # GET /proposed_books/1.json
   def show
+    @user_books = current_user.ProposedBook.all
   end
 
   # GET /proposed_books/new

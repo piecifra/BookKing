@@ -37,3 +37,16 @@
 <%= link_to 'Elimina', @proposed_book, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
 <%= link_to 'Indietro', proposed_books_path %>
+
+<% if user_signed_in? %>
+  <% if current_user.id != @proposed_book.user.id %>
+    <h4>Proponi Scambio</h4>
+    <%= form_for :proposal, :url => {:action => 'create', :controller => 'proposals'} do |f| %>
+      <%= f.collection_select :libromittente_id, @user_books, :id, :nome %>
+      <%= f.hidden_field :librodestinatario_id, :value => @proposed_book.id %>
+      <%= f.hidden_field :mittente_id, :value => current_user.id %>
+      <%= f.hidden_field :destinatario_id, :value => @proposed_book.user.id %>
+      <%= f.submit "Proponi", :action => :create %>
+    <% end %>
+  <% end %>
+<% end %>

@@ -36,4 +36,4 @@
 <%  if can? :destroy, @desidered_book%>
 <%= link_to 'Elimina', @proposed_book, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
-<%= link_to 'Indietro', desidered_book_path %>
+<%= link_to 'Indietro', desidered_books_path %>

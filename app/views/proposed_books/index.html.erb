@@ -27,13 +27,13 @@
         <td><%= proposed_book.ISBN %></td>
         <td><%= proposed_book.user.username %></td>
         <% if can? :read, proposed_book %>
-        <td><%= link_to 'Show', proposed_book %></td>
+        <td><%= link_to 'Show', proposed_book, class: "btn btn-warning" %></td>
         <% end %>
         <% if can? :update, proposed_book %>
-        <td><%= link_to 'Edit', edit_proposed_book_path(proposed_book) %></td>
+        <td><%= link_to 'Edit', edit_proposed_book_path(proposed_book), class: "btn btn-warning" %></td>
         <% end %>
         <% if can? :delete, proposed_book %>
-        <td><%= link_to 'Destroy', proposed_book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', proposed_book, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-warning" %></td>
         <% end %>
       </tr>
     <% end %>
@@ -42,4 +42,4 @@
 
 <br>
 
-<%= link_to 'New Proposed Book', new_proposed_book_path %>
+<%= link_to 'New Proposed Book', new_proposed_book_path, class: "btn btn-lg btn-primary" %>

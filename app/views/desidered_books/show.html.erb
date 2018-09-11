@@ -1,39 +1,45 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Nome:</strong>
-  <%= @desidered_book.nome %>
-</p>
+<div class= "panel panel-default">
+  <div class= "panel-body">
+    <h1>Descrizione libro:</h1>
+    <p>
+      <strong>Nome:</strong>
+      <%= @desidered_book.nome %>
+    </p>
 
-<p>
-  <strong>Autore:</strong>
-  <%= @desidered_book.autore %>
-</p>
+    <p>
+      <strong>Autore:</strong>
+      <%= @desidered_book.autore %>
+    </p>
 
-<p>
-  <strong>Genere:</strong>
-  <%= @desidered_book.genere %>
-</p>
+    <p>
+      <strong>Genere:</strong>
+      <%= @desidered_book.genere %>
+    </p>
 
-<p>
-  <strong>Anno:</strong>
-  <%= @desidered_book.anno %>
-</p>
+    <p>
+      <strong>Anno:</strong>
+      <%= @desidered_book.anno %>
+    </p>
 
-<p>
-  <strong>Isbn:</strong>
-  <%= @desidered_book.ISBN %>
-</p>
+    <p>
+      <strong>Isbn:</strong>
+      <%= @desidered_book.ISBN %>
+    </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @desidered_book.user.username %>
-</p>
+    <p>
+      <strong>User:</strong>
+      <%= @desidered_book.user.username %>
+    </p>
 
-<%  if can? :update, @desidered_book%>
-<%= link_to 'Modifica', edit_desidered_book_path(@desidered_book) %> 
-<% end %>
-<%  if can? :destroy, @desidered_book%>
-<%= link_to 'Elimina', @proposed_book, method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
-<%= link_to 'Indietro', desidered_books_path %>
+    <%  if can? :update, @desidered_book%>
+    <%= link_to 'Modifica', edit_desidered_book_path(@desidered_book), class: "btn btn-warning"%> 
+    <% end %>
+    <%  if can? :destroy, @desidered_book%>
+    <%= link_to 'Elimina', @proposed_book, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to 'Indietro', desidered_books_path, class: "btn btn-default" %>

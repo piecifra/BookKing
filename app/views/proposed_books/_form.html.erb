@@ -1,54 +1,61 @@
-<%= form_with(model: proposed_book, local: true) do |form| %>
-  <% if proposed_book.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(proposed_book.errors.count, "error") %> prohibited this proposed_book from being saved:</h2>
+<div class="row">
+<div class="col-sm-4"></div>
+<div class= "col-sm-4 panel panel-default">
 
-      <ul>
-      <% proposed_book.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <%= form_with(model: proposed_book, local: true) do |form| %>
+    <% if proposed_book.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(proposed_book.errors.count, "error") %> prohibited this proposed_book from being saved:</h2>
+
+        <ul>
+        <% proposed_book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <p><%= form.label :nome %></p>
+      <%= form.text_field :nome, id: :proposed_book_nome %>
+    </div>
+
+    <div class="field">
+      <p><%= form.label :autore %></p>
+      <%= form.text_field :autore, id: :proposed_book_autore %>
+    </div>
+
+    <div class="field">
+      <p><%= form.label :genere %></p>
+      <%= form.text_field :genere, id: :proposed_book_genere %>
+    </div>
+
+    <div class="field">
+      <p><%= form.label :stato %></p>
+      <%= form.text_field :stato, id: :proposed_book_stato %>
+    </div>
+
+    <div class="field">
+      <p><%= form.label :anno %></p>
+      <%= form.number_field :anno, id: :proposed_book_anno %>
+    </div>
+
+    <div class="field">
+      <p><%= form.label :ISBN %></p>
+      <%= form.number_field :ISBN, id: :proposed_book_ISBN %>
+    </div>
+
+    <% if @id.nil? %>
+      <%= form.hidden_field :user_id, :value => current_user.id %>
+    <% else %>
+      <%= form.hidden_field :user_id, :value => @id %>
+    <% end %>
+
+    <div class="actions">
+      <%= form.submit 'Salva', class: "btn btn-primary" %>
+      <%= form.submit 'Salva tramite ISBN', class: "btn btn-primary" %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :nome %>
-    <%= form.text_field :nome, id: :proposed_book_nome %>
-  </div>
-
-  <div class="field">
-    <%= form.label :autore %>
-    <%= form.text_field :autore, id: :proposed_book_autore %>
-  </div>
-
-  <div class="field">
-    <%= form.label :genere %>
-    <%= form.text_field :genere, id: :proposed_book_genere %>
-  </div>
-
-  <div class="field">
-    <%= form.label :stato %>
-    <%= form.text_field :stato, id: :proposed_book_stato %>
-  </div>
-
-  <div class="field">
-    <%= form.label :anno %>
-    <%= form.number_field :anno, id: :proposed_book_anno %>
-  </div>
-
-  <div class="field">
-    <%= form.label :ISBN %>
-    <%= form.number_field :ISBN, id: :proposed_book_ISBN %>
-  </div>
-
-  <% if @id.nil? %>
-    <%= form.hidden_field :user_id, :value => current_user.id %>
-  <% else %>
-    <%= form.hidden_field :user_id, :value => @id %>
-  <% end %>
-
-  <div class="actions">
-    <%= form.submit 'Salva' %>
-    <%= form.submit 'Salva tramite ISBN' %>
-  </div>
-<% end %>
+</div>
+<div class="col-sm-4"></div>
+</div>

@@ -33,7 +33,7 @@
         <td><%= link_to 'Edit', edit_proposed_book_path(proposed_book), class: "btn btn-warning" %></td>
         <% end %>
         <% if can? :delete, proposed_book %>
-        <td><%= link_to 'Destroy', proposed_book, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-warning" %></td>
+        <td><%= link_to 'Destroy', proposed_book, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
         <% end %>
       </tr>
     <% end %>

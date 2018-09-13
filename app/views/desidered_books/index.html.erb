@@ -26,7 +26,7 @@
         <td><%= desidered_book.user.username %></td>
         <td><%= link_to 'Show', desidered_book, class: "btn btn-warning" %></td>
         <td><%= link_to 'Edit', edit_desidered_book_path(desidered_book), class: "btn btn-warning" %></td>
-        <td><%= link_to 'Destroy', desidered_book, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-warning" %></td>
+        <td><%= link_to 'Destroy', desidered_book, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>

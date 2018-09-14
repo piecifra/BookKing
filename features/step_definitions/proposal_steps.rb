@@ -13,3 +13,7 @@ end
 Then("I should see a proposalcalled {string}") do |string|
   expect(page).to have_content(string)
 end
+
+Then("I shouldn't see a proposalcalled {string}") do |string|
+  expect(page).to_not have_content(string)
+end

@@ -9,7 +9,7 @@ class ProposedBooksController < ApplicationController
 
   def search
     @ricerca = params['ricerca']
-    @value = params[:search]
+    @value = params[:search_book]
     ascdesc = ' ASC'
     ord = 'nome'
     if params['Ordina'] != nil

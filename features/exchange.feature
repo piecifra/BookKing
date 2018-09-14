@@ -1,41 +1,34 @@
-Feature: Proposal
-	I want to make a proposal
+Feature: Exchange
+	I want to see my exchange
     As user
     
-	Scenario: make proposal1 
+	Scenario: make exchange1 
 		Given a valid user with email "user1@user.it" username "user1" and password "useruser"
         Given a valid user with email "user2@user.it" username "user2" and password "useruser"
-    	Given a ProposedBook exists called "Libro1" with isbn "1234567890" from user with 1 as id
-        Given a ProposedBook exists called "Libro2" with isbn "1234567891" from user with 2 as id
-        Given a Proposal mid 1 did 2 lm 1 ld 2
+        Given a valid exchange with mid 1 did 2 libromittente "libromittente" librodestinatario "librodestinatario"
         When I go to the login page
     	When I sign in with email "user2@user.it" and password "useruser"
     	Then I should see "Welcome to BookKing !"
     	When I visit my proposal
-    	Then I should see a proposalcalled "Libro1"
+    	Then I should see a exchange involving "librodestinatario" "libromittente" and "user1"
 
 
-    Scenario: make proposal2 
+    Scenario: make exchange2 
         Given a valid user with email "user1@user.it" username "user1" and password "useruser"
         Given a valid user with email "user2@user.it" username "user2" and password "useruser"
-        Given a ProposedBook exists called "Libro1" with isbn "1234567890" from user with 1 as id
-        Given a ProposedBook exists called "Libro2" with isbn "1234567891" from user with 2 as id
-        Given a Proposal mid 2 did 1 lm 1 ld 2
+        Given a valid exchange with mid 1 did 2 libromittente "libromittente" librodestinatario "librodestinatario"
         When I go to the login page
         When I sign in with email "user1@user.it" and password "useruser"
         Then I should see "Welcome to BookKing !"
         When I visit my proposal
-        Then I should see a proposalcalled "Libro1"
+        Then I should see a exchange involving "librodestinatario" "libromittente" and "user2"
 
-    Scenario: make proposal3
+    Scenario: make exchange3
         Given a valid user with email "user1@user.it" username "user1" and password "useruser"
         Given a valid user with email "user2@user.it" username "user2" and password "useruser"
-        Given a ProposedBook exists called "Libro1" with isbn "1234567890" from user with 1 as id
-        Given a ProposedBook exists called "Libro2" with isbn "1234567891" from user with 2 as id
-        Given a ProposedBook exists called "Libro1" with isbn "1234567892" from user with 1 as id
-        Given a Proposal mid 2 did 1 lm 1 ld 2
+        Given a valid exchange with mid 1 did 2 libromittente "libromittente" librodestinatario "librodestinatario"
         When I go to the login page
         When I sign in with email "user1@user.it" and password "useruser"
         Then I should see "Welcome to BookKing !"
         When I visit my proposal
-        Then I shouldn't see a proposalcalled "Libro3"
+        Then I shouldn't see a exchange involving "user1"

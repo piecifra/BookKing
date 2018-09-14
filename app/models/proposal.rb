@@ -9,6 +9,8 @@ class Proposal < ApplicationRecord
   validate :librom_librod
 
 
+  private
+
   def mittente_destinatario
   	if mittente == destinatario
   		errors.add(:domain, "Gli utenti devono essere diversi")

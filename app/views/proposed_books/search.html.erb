@@ -1,5 +1,5 @@
 <% if @proposed_books.empty? %>
-	<h1>No results</h1>
+	<h1>Nessun libro trovato</h1>
 <% else %>
 	<h1>Risultati trovati:</h1>
 		<%= form_tag booksearch_path, :method => 'get' do %>

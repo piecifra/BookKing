@@ -14,9 +14,10 @@
 <h3>Cerca utente:</h3>
 <%= form_tag userssearch_path, :method => 'get' do %>
     <div>
-        <%= text_field_tag :search, params[:search] %>
+    	<p><%= label_tag name = 'search_user', display = '' %></p>
+        <%= text_field_tag :search_user, params[:search_user] %>
         <%= select_tag "ricerca", options_for_select([ "username", "email", "indirizzo", "anno" ], "username") %>
-        <%= submit_tag "Cerca", :name => nil , class: "btn btn-log btn-primary"%>
+        <%= submit_tag "Cerca Utente", :search_user => nil , class: "btn btn-log btn-primary"%>
     </div>
 	
 <% end %>
@@ -24,9 +25,10 @@
 <h3>Cerca libro:</h3>
 <%= form_tag booksearch_path, :method => 'get' do %>
 	<div>
-		<%= text_field_tag :search, params[:search] %>
+		<p><%= label_tag name = 'search_book', display = '' %></p>
+		<%= text_field_tag :search_book, params[:search_book] %>
         <%= select_tag "ricerca", options_for_select([ "nome", "autore", "genere", "anno" ], "Nome") %>
-		<%= submit_tag "Cerca", :search => nil , class: "btn btn-log btn-primary"%>
+		<%= submit_tag "Cerca Libro", :search_book => nil , class: "btn btn-log btn-primary"%>
 	</div>
 <% end %>
 

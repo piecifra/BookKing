@@ -11,8 +11,8 @@ class UsersController < ApplicationController
 	    	@ricerca = params['ricerca']
 	    end
 	    @value = ''
-	    if params[:search] != nil
-	    	@value = params[:search]
+	    if params[:search_user] != nil
+	    	@value = params[:search_user]
 	    end
 	    ascdesc = ' ASC'
 	    ord = 'username'

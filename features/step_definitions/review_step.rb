@@ -10,3 +10,8 @@ Then("I should see a review with {int} and {string}") do |int, string|
   expect(page).to have_content(int)
   expect(page).to have_content(string)
 end
+
+Then("I shouldn't see a review with {int} and {string}") do |int, string|
+  expect(page).to_not have_content(string)
+  expect(page).to have_content(int)
+end

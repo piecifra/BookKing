@@ -19,7 +19,7 @@ class DesideredBooksController < ApplicationController
 
   # GET /desidered_books/1/edit
   def edit
-
+    authorize! :edit, @desidered_book
   end
 
   # POST /desidered_books
@@ -68,6 +68,7 @@ class DesideredBooksController < ApplicationController
   # PATCH/PUT /desidered_books/1.json
   def update
     respond_to do |format|
+      authorize! :edit, @desidered_book
       if @desidered_book.update(desidered_book_update_params)
         format.html { redirect_to @desidered_book, notice: 'Desidered book was successfully updated.' }
         format.json { render :show, status: :ok, location: @desidered_book }

@@ -5,6 +5,7 @@ class ReportsController < ApplicationController
   # GET /reports.json
   def index
     @reports = Report.all
+    authorize! :read, @reports
   end
 
   # GET /reports/1

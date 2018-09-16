@@ -42,7 +42,7 @@ gem 'bootstrap-sass', '3.3.7'
 #Auth
 gem 'devise'
 
-gem 'cancancan', '~> 1.9'
+gem 'cancancan', '~> 2.0'
 
 #Image
 gem 'paperclip', '~> 5.2.0'

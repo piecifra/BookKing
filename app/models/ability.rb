@@ -24,6 +24,8 @@ class Ability
         cannot :create, ProposedBook
         cannot :create, DesideredBook
         cannot :create, UserReview
+        can :read, User
+        can :read, UserReview
         can :read, ProposedBook
         can :read, DesideredBook
     end

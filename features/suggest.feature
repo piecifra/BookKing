@@ -43,7 +43,7 @@ Feature: Suggest
 	Scenario: Suggest 4
 		Given a valid user with email "admin1@admin.it" username "admin1" and password "adminadmin"
 		Given a valid user with email "admin2@admin.it" username "admin2" and password "adminadmin"
-		Given a valid user with email "admin3@admin.it" username "admin2" and password "adminadmin"
+		Given a valid user with email "admin3@admin.it" username "admin3" and password "adminadmin"
 		Given a ProposedBook exists called "Libro1" with isbn "1234567891" from user with 1 as id
 		Given a ProposedBook exists called "Libro2" with isbn "1234567892" from user with 2 as id
 		Given a DesideredBook exists called "Libro1" with isbn "1234567891" from user with 3 as id

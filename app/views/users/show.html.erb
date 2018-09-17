@@ -46,13 +46,13 @@
 				        <td><%= desidered_book.ISBN %></td>
 				        <td><%= desidered_book.user.username %></td>
 				        <% if can? :read, desidered_book %>
-				        <td><%= link_to 'Show', desidered_book, class: "btn btn-warning" %></td>
+				        <td><%= link_to 'Mostra', desidered_book, class: "btn btn-default" %></td>
 				        <% end %>
 				        <% if can? :update, desidered_book %>
-				        <td><%= link_to 'Edit', edit_desidered_book_path(desidered_book), class: "btn btn-warning" %></td>
+				        <td><%= link_to 'Modifica', edit_desidered_book_path(desidered_book), class: "btn btn-warning" %></td>
 				        <% end %>
 				        <% if can? :delete, desidered_book %>
-				        <td><%= link_to 'Destroy', desidered_book, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-warning" %></td>
+				        <td><%= link_to 'Elimina', desidered_book, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
 				        <% end %>
 				      </tr>
 				    <% end %>

@@ -28,6 +28,12 @@ class ProposalsController < ApplicationController
 		@e.save
 		@b1.destroy
 		@b2.destroy
+		if !@b3.nil?
+			@b3.destroy
+		end
+		if !@b4.nil?
+			@b4.destroy
+		end
 		@p.destroy
 	    redirect_to root_path
 	end

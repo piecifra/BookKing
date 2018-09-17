@@ -53,10 +53,6 @@ gem "omniauth-google-oauth2", "~> 0.2.1"
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
 end
- 
-group :test do
-  gem 'capybara'
-end
 
 group :test do
   gem 'cucumber-rails', require: false

@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe DesideredBook, :type => :model do
+  
   describe "Create book without an ISBN" do
 	  it "shouldn't be permitted" do
 	  	m1 = User.new(:id => '1', :email => 'prova1@example.it', :username => 'user1', :password => 'useruser')
@@ -25,7 +26,7 @@ RSpec.describe DesideredBook, :type => :model do
 	  end
   end
 
-  describe "Create book without invalid ISBN" do
+  describe "Create book with invalid ISBN" do
 	  it "shouldn't be permitted" do
 	  	m1 = User.new(:id => '1', :email => 'prova1@example.it', :username => 'user1', :password => 'useruser')
 	    book = DesideredBook.new(:user => m1, :anno => 2010, :genere => 'Genere', :autore => 'autore', :ISBN => 'ciao')

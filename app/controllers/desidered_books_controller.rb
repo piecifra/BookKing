@@ -1,10 +1,11 @@
 class DesideredBooksController < ApplicationController
   before_action :set_desidered_book, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:index, :new, :edit]
 
   # GET /desidered_books
   # GET /desidered_books.json
   def index
-    @desidered_books = current_user.DesideredBook
+      @desidered_books = current_user.DesideredBook
   end
 
   # GET /desidered_books/1

@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
 
 	protect_from_forgery with: :exception
 	before_action :configure_permitted_parameters, if: :devise_controller?
+	rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
 
 	# Catch all CanCan errors and alert the user of the exception
@@ -12,6 +13,12 @@ class ApplicationController < ActionController::Base
 			format.js   { head :forbidden, content_type: 'text/html' }
 		end
 	end
+
+	private
+
+		def record_not_found
+			render file: "#{Rails.root}/public/404", layout: true, status: :not_found
+		end
 
 	protected
 

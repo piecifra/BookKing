@@ -1,10 +1,11 @@
 class ProposedBooksController < ApplicationController
   before_action :set_proposed_book, only: [:show, :edit, :destroy, :update]
+  before_action :authenticate_user!, only: [:index, :new, :edit]
 
   # GET /proposed_books
   # GET /proposed_books.json
   def index
-    @proposed_books = current_user.ProposedBook
+      @proposed_books = current_user.ProposedBook
   end
 
   def search
@@ -33,6 +34,7 @@ class ProposedBooksController < ApplicationController
 
   # GET /proposed_books/new
   def new
+    authorize! :show, ProposedBook
     @proposed_book = ProposedBook.new
   end
 

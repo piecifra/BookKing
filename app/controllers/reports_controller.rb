@@ -5,12 +5,13 @@ class ReportsController < ApplicationController
   # GET /reports.json
   def index
     @reports = Report.all
-    authorize! :read, @reports
+    authorize! :read, @report
   end
 
   # GET /reports/1
   # GET /reports/1.json
   def show
+    authorize! :read, @report
   end
 
   # GET /reports/new
@@ -20,6 +21,7 @@ class ReportsController < ApplicationController
 
   # GET /reports/1/edit
   def edit
+    authorize! :edit, @report
   end
 
   # POST /reports
@@ -29,7 +31,7 @@ class ReportsController < ApplicationController
 
     respond_to do |format|
       if @report.save
-        format.html { redirect_to @report, notice: 'Report was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Utente correttamente segnalato' }
         format.json { render :show, status: :created, location: @report }
       else
         format.html { render :new }

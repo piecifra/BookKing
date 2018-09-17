@@ -21,7 +21,7 @@
           <td><%= r.comment %></td>
           <td>
           <% if can? :delete, r %>
-            <%= link_to 'Elimina', r, method: :delete, data: { confirm: 'Sei sicuro?' } %>
+            <%= link_to 'Elimina', r, method: :delete, data: { confirm: 'Sei sicuro?' }, class: "btn btn-danger" %>
           <% end %>
           </td>
         </tr>

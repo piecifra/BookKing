@@ -11,6 +11,7 @@ class ProposalsController < ApplicationController
 	end
 
 	def index
+			@pending_proposal = Proposal.where(:mittente_id => current_user.id )
 			@proposal = Proposal.where(:destinatario_id => current_user.id )
 			@exchange = Exchange.where(:destinatario_id => current_user.id ).or(Exchange.where(mittente_id: current_user))
 	end
